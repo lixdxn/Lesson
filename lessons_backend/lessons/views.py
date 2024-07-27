@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from .models import Lesson
 from .forms import LessonForm
-from lessons_backend.messages import ErrorMessages
+from .messages import ErrorMessages
 
 
 class LessonListView(ListView):
