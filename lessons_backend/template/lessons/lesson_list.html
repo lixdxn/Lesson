@@ -1,0 +1,42 @@
+<!-- templates/lessons/lesson_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Lesson List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Lesson List</h1>
+    <a href="{% url 'lesson_create' %}" class="btn btn-primary mb-3">Add New Lesson</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Teacher</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lesson in lessons %}
+                <tr>
+                    <td><a href="{% url 'lesson_detail' lesson.slug %}">{{ lesson.title }}</a></td>
+                    <td>{{ lesson.category.name }}</td>
+                    <td>{{ lesson.teacher }}</td>
+                    <td>{{ lesson.duration }} mins</td>
+                    <td>${{ lesson.price }}</td>
+                    <td>
+                        <a href="{% url 'lesson_update' lesson.slug %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'lesson_delete' lesson.slug %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">No lessons found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

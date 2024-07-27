@@ -1,0 +1,9 @@
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=aprico
+DB_USERNAME=postgres
+DB_PASSWORD=1234
+
+SECRET_KEY=L8915elok7wq!iklasdasdf%4209-0249d!0d-+udjj+x+y%qnx!8p3x@8cutybw
+DEBUG=True
+ALLOWED_HOSTS=

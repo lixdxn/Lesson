@@ -1,0 +1,49 @@
+<!-- templates/lessons/lesson_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Lesson Detail{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ lesson.title }}</h1>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Category:</th>
+                <td>{{ lesson.category.name }}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{ lesson.description }}</td>
+            </tr>
+            <tr>
+                <th>Teacher:</th>
+                <td>{{ lesson.teacher }}</td>
+            </tr>
+            <tr>
+                <th>Duration:</th>
+                <td>{{ lesson.duration }} mins</td>
+            </tr>
+            <tr>
+                <th>Price:</th>
+                <td>${{ lesson.price }}</td>
+            </tr>
+            <tr>
+                <th>Language:</th>
+                <td>{{ lesson.language }}</td>
+            </tr>
+            <tr>
+                <th>Created At:</th>
+                <td>{{ lesson.created_at }}</td>
+            </tr>
+            <tr>
+                <th>Image:</th>
+                <td><img src="{{ lesson.image.url }}" alt="{{ lesson.title }}" class="img-fluid" style="max-width: 300px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'lesson_list' %}" class="btn btn-secondary">Back to List</a>
+    <a href="{% url 'lesson_update' lesson.slug %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'lesson_delete' lesson.slug %}" class="btn btn-danger">Delete</a>
+</div>
+{% endblock %}

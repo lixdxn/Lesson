@@ -1,0 +1,16 @@
+<!-- templates/lessons/lesson_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ form.instance.pk|yesno:"Edit Lesson,Add Lesson" }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ form.instance.pk|yesno:"Edit Lesson,Add Lesson" }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'lesson_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
